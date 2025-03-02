@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kysertweaks Panel</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Orbitron', sans-serif;
+        }
+        body {
+            background-color: #0b0b0f;
+            color: white;
+            text-align: center;
+        }
+        #login-container {
+            margin-top: 20%;
+        }
+        input {
+            padding: 10px;
+            width: 220px;
+            font-size: 16px;
+            background: #1a1a2e;
+            color: white;
+            border: 1px solid #7d00ff;
+            text-align: center;
+        }
+        button {
+            padding: 10px 20px;
+            cursor: pointer;
+            background: #7d00ff;
+            color: white;
+            border: none;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        #error-message {
+            color: red;
+            display: none;
+            margin-top: 10px;
+        }
+        #panel-container {
+            display: none;
+            padding: 20px;
+            text-align: left;
+        }
+        header {
+            background: #121212;
+            padding: 10px;
+            font-size: 22px;
+            text-align: center;
+            border-bottom: 2px solid #7d00ff;
+        }
+        .status {
+            color: lime;
+            font-size: 16px;
+            text-align: center;
+            margin-top: 10px;
+        }
+        .panel {
+            background: #1a1a2e;
+            padding: 15px;
+            border-radius: 10px;
+            width: 30%;
+            display: inline-block;
+            vertical-align: top;
+            margin: 10px;
+            box-shadow: 0 0 15px rgba(125, 0, 255, 0.7);
+        }
+        .panel h2 {
+            text-align: center;
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #7d00ff;
+        }
+        .panel label {
+            display: block;
+            font-size: 16px;
+            margin: 8px 0;
+            cursor: pointer;
+        }
+        .panel input[type="checkbox"] {
+            margin-right: 8px;
+            transform: scale(1.2);
+            accent-color: #7d00ff;
+        }
+        .slider {
+            width: 100%;
+            margin-top: 10px;
+        }
+        .btn {
+            width: 100%;
+            padding: 10px;
+            margin-top: 15px;
+            background: #7d00ff;
+            border: none;
+            color: white;
+            font-size: 18px;
+            cursor: pointer;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<body>
+    <div id="login-container">
+        <h2>Nhập Key để vào Panel</h2>
+        <input type="password" id="key-input" placeholder="Nhập key...">
+        <button onclick="checkKey()">Vào</button>
+        <p id="error-message">Key sai! Hãy thử lại.</p>
+    </div>
+
+    <div id="panel-container">
+        <header>
+            <h1>Kysertweaks Panel</h1>
+        </header>
+        <p class="status">🟢 Status: Online</p>
+        <main>
+            <div class="panel">
+                <h2>Chỉnh Aim</h2>
+                <label><input type="checkbox"> Aimbot</label>
+                <label><input type="checkbox"> Aimlock</label>
+                <label><input type="checkbox"> Aim Neck</label>
+                <label><input type="checkbox"> Aim Head</label>
+                <label><input type="checkbox"> Easy Lock</label>
+                <input type="range" min="1" max="100" value="50" class="slider">
+            </div>
+
+            <div class="panel">
+                <h2>Hỗ Trợ Bắn</h2>
+                <label><input type="checkbox"> No Recoil</label>
+                <label><input type="checkbox"> HeadFov</label>
+                <label><input type="checkbox"> Precision</label>
+                <label><input type="checkbox"> Aim Legit</label>
+                <label><input type="checkbox"> OB48</label>
+                <input type="range" min="1" max="100" value="50" class="slider">
+            </div>
+
+            <div class="panel">
+                <h2>Điều Chỉnh Sensi</h2>
+                <label>VMH4X</label>
+                <input type="range" min="1" max="100" value="50" class="slider">
+                <label>AGE REGEDIT</label>
+                <input type="range" min="1" max="100" value="50" class="slider">
+                <label>P'2PX' MS</label>
+                <input type="range" min="1" max="100" value="50" class="slider">
+                <label>SENSI X</label>
+                <input type="range" min="1" max="100" value="50" class="slider">
+            </div>
+        </main>
+        <button class="btn">Áp Dụng</button>
+    </div>
+
+    <script>
+        function checkKey() {
+            let keyInput = document.getElementById("key-input").value;
+            let errorMessage = document.getElementById("error-message");
+            let loginContainer = document.getElementById("login-container");
+            let panelContainer = document.getElementById("panel-container");
+
+            if (keyInput === "Kysertweaks") {
+                loginContainer.style.display = "none";
+                panelContainer.style.display = "block";
+
+                // Chuyển màn hình ngang
+                if (screen.orientation) {
+                    screen.orientation.lock("landscape").catch(() => {});
+                }
+            } else {
+                errorMessage.style.display = "block";
+            }
+        }
+    </script>
+</body>
+</html>
